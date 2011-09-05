@@ -121,12 +121,21 @@ class RepositoriesController < ApplicationController
     @changesets = @repository.changesets.find(:all,
                        :limit  =>  @changeset_pages.items_per_page,
                        :offset =>  @changeset_pages.current.offset,
-                       :include => [:user, :repository])
+                       :include => [:user, :repository, :parents])
 
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
       format.atom { render_feed(@changesets, :title => "#{@project.name}: #{l(:label_revision_plural)}") }
     end
+  end
+
+  def branch_graph
+    @changesets = @repository.changesets.find(:all,
+                       :limit  =>  1000,
+                       :offset =>  0,
+                       :include => [:user, :repository, :parents])
+
+    render :layout => false if request.xhr?
   end
 
   def entry

@@ -691,6 +691,7 @@ en:
   label_f_hour_plural: "%{value} hours"
   label_time_tracking: Time tracking
   label_change_plural: Changes
+  label_branch_graph: Branch Graph
   label_statistics: Statistics
   label_commits_per_month: Commits per month
   label_commits_per_author: Commits per author

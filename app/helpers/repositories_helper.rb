@@ -290,6 +290,7 @@ module RepositoriesHelper
     #
     # @return [Array<TimeDate>] list of commit dates corelated with time on commits
     def index_commits(commits, heads)
+      return nil if commits.nil? or commits.first.parents.nil?
       days = []
       map = {}
       commit_hashes = []
@@ -332,7 +333,7 @@ module RepositoriesHelper
           j = mark_chain(j+=1,map[h.revision], map)
         end
       end
-      # when no head methced any thing use firs commit
+      # when no head matched anything use first commit
       if j == 0 then
          mark_chain(j+=1,map.values.first, map)
       end

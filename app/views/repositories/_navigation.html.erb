@@ -2,6 +2,8 @@
   <%= javascript_include_tag 'repository_navigation' %>
 <% end %>
 
+<%= link_to l(:label_branch_graph), {:action => 'branch_graph', :id => @project} %>
+
 <%= link_to l(:label_statistics), {:action => 'stats', :id => @project}, :class => 'icon icon-stats' %>
 
 <% form_tag({:action => controller.action_name, :id => @project, :path => to_path_param(@path), :rev => ''}, {:method => :get, :id => 'revision_selector'}) do -%>
