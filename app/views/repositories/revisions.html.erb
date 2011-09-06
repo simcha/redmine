@@ -7,8 +7,6 @@
 
 <h2><%= l(:label_revision_plural) %></h2>
 
-<p><%= render :partial => 'branch_graph',:locals => {:days_commits => index_commits(@changesets, @repository.branches)}%></p>
-
 <%= render :partial => 'revisions',
            :locals => {:project   => @project,
                        :path      => '', 
