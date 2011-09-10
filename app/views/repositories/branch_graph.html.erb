@@ -6,7 +6,7 @@
 </div>
 
 <h2><%= l(:label_revision_plural) %></h2>
-
-<p><%= render :partial => 'branch_graph',:locals => {:days_commits => index_commits(@changesets, @repository.branches)}%></p>
+<%href_proc = Proc.new {|x|url_for(:controller => 'repositories', :action => 'revision', :id => @project, :rev => x)}%>
+<p><%= render :partial => 'branch_graph',:locals => {:days_commits => index_commits(@changesets, @repository.branches, href_proc)}%></p>
 
 <% html_title(l(:label_revision_plural)) -%>
